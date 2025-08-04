@@ -2,8 +2,19 @@ import express from 'express'
 import cors from 'cors'
 
 const app = express()
-app.use(cors())
 const PORT = 5000
+
+app.use(cors({
+     origin:"https://intern-portal-pi.vercel.app",
+     credentials:true,
+     methods:["GET","POST","PUT","PATCH","DELETE"]
+     
+}))
+
+// Server Start
+app.listen(PORT, () => {
+  console.log(`Server started on ${PORT}`)
+})
 
 
 // Intern Info API
@@ -25,7 +36,4 @@ app.get('/api/intern', (req, res) => {
   ])
 })
 
-// Server Start
-app.listen(PORT, () => {
-  console.log(`Server started on ${PORT}`)
-})
+
